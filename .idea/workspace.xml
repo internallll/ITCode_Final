@@ -1,12 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="60583c6f-2357-4f56-bcb5-937c8fd6eded" name="Changes" comment="" />
+    <list default="true" id="60583c6f-2357-4f56-bcb5-937c8fd6eded" name="Changes" comment="Add models">
+      <change afterPath="$PROJECT_DIR$/detailShop/templates/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/detailShop/templates/car_confirm_delete.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/detailShop/templates/car_detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/detailShop/templates/car_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/detailShop/templates/car_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/detailShop/templates/detail_detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/detailShop/templates/detail_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/detailShop/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/detailShop/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/detailShop/media/logo.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/media/logo.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/detailShop/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/detailShop/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/detailShop/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/detailShop/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/urls.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "internallll"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/internallll/ITCode_Final.git",
+    "accountId": "38e8c41a-56d7-455b-800d-58b21ed40adb"
+  }
+}]]></component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 5
 }]]></component>
@@ -18,9 +59,22 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/Admin/PycharmProjects/ITCode_Final/detailShop/media",
+    "settings.editor.selected.configurable": "editing.templates"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\PycharmProjects\ITCode_Final\detailShop\media" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\PycharmProjects\ITCode_Final" />
+      <recent name="C:\Users\Admin\PycharmProjects\ITCode_Final\detailShop\templates" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -37,6 +91,30 @@
       <option name="presentableId" value="Default" />
       <updated>1729965768603</updated>
     </task>
+    <task id="LOCAL-00001" summary="Add models">
+      <option name="closed" value="true" />
+      <created>1730118587161</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1730118587161</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add models" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add models" />
   </component>
 </project>

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %} {{detail.name}} {%endblock%}
+
+{%block content%}
+<div class="container nt-5">
+  <div class="row">
+    <div class="col-md-6">
+      <h1> {{detail.name}}</h1>
+      <br>
+      <h5>Описание: <br/>
+        <a>{{detail.description}}</a></h5>
+      <h5>Цена: <p>{{detail.price}}</p></h5>
+      <h5>Страна производства: <p>{{detail.country_prod}}</p></h5>
+      <h5>Наличие на складе: <p>{{detail.storage|default_if_none:"Отсутствует"}}</p></h5>
+      <img src="/media/{{detail.image}}" class="img-fluid" alt="Responsive image">
+
+      <br>
+
+
+      <a href="{%url 'index' %}" class="btn btn-secondary">На главную</a>
+      <a href="{% url 'create_order' %}" class="btn btn-primary"> Перейти к оформлению</a>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

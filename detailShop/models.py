@@ -1,50 +1,23 @@
 from django.db import models
+from django.template.defaultfilters import length
 
-
-class Car(models.Model):
-    name = models.CharField(verbose_name='Название', max_length=255)
-    generation = models.ForeignKey(
-        'Generation',
-        on_delete=models.CASCADE, related_name='generation_car', null=True
-
-    )
-    class Meta:
-        verbose_name='Машина'
-        verbose_name_plural = 'Машины'
-        ordering =['-name']
-
-    def __str__(self):
-        return self.name
-
-
-class Generation(models.Model):
-    title = models.CharField(verbose_name='Название', max_length=255)
-    year_start = models.IntegerField(verbose_name='Год начала выпуска', blank=True)
-    year_end = models.IntegerField(verbose_name='', blank=True)
-    image = models.ImageField(upload_to='media', null = True, blank = True)
-
-    class Meta:
-        verbose_name = 'Поколение'
-        verbose_name_plural = 'Поколения'
-        ordering = ['-title']
-
-    def __str__(self):
-        return self.title
 
 class Detail(models.Model):
     name = models.CharField(verbose_name='Название детали', max_length=255)
     description = models.TextField(verbose_name='Описание детали', blank=True)
     price = models.IntegerField(verbose_name='Цена детали', blank=True)
     country_prod =models.CharField(verbose_name='Страна производства', max_length=255, blank=True)
+    image = models.ImageField(upload_to='media', null = True, blank = True)
+
     storage = models.ForeignKey(
         'Storage',
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE, null=True, blank=True
 
     )
-    car = models.ForeignKey(
-        'Car',
-        on_delete=models.CASCADE, default=1,
-        related_name ='car_detail'
+
+    category = models.ForeignKey(
+        'Category',
+        on_delete=models.CASCADE, related_name='category_detail', null = True
     )
     def __str__(self):
         return self.name
@@ -85,8 +58,17 @@ class Order(models.Model):
     customer = models.CharField(verbose_name='Заказчик', max_length=255)
     address_delivery = models.CharField(verbose_name='Адрес доставки', max_length=255,blank=True)
     comment = models.TextField(verbose_name='Комментарий к заказу', blank=True)
+    phone_number = models.CharField(max_length=20, verbose_name="Номер телефона", null = True)
+    status = models.CharField(max_length=50, default='В обработке', verbose_name="Статус заказа")
+    sum = models.IntegerField(default=0, verbose_name='Сумма заказа')
 
 
+    def calculate_sum(self):
+        total_sum = 0
+        for element in self.order_elements.all():
+            total_sum += element.detail.price * element.count  # Умножаем цену детали на количество
+        self.sum = total_sum
+        self.save()
 
     class Meta:
         verbose_name = 'Заказ'
@@ -96,14 +78,14 @@ class Order(models.Model):
 
 
     def __str__(self):
-        return self.customer
+        return f"Заказ № {self.pk} | Покупатель {self.customer}"
 
 
 
 class OrderElement(models.Model):
     detail = models.ForeignKey('Detail',
-                               on_delete=models.CASCADE)
-    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='order_elements', blank=True, null=True)
+                               on_delete=models.CASCADE, verbose_name="Деталь")
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='order_elements', verbose_name="Заказ", blank=True, null=True)
     count = models.IntegerField(verbose_name='Количество элементов',blank=True, default=1)
 
     class Meta:
@@ -112,4 +94,15 @@ class OrderElement(models.Model):
         ordering = ['-detail']
 
     def __str__(self):
-       return f'{self.count} x {self.detail.name}'
+       return f'Товар {self.detail} | Заказ № {self.order.pk}'
+
+class Category(models.Model):
+    name = models.CharField(verbose_name='Название категории', max_length=255)
+
+    class Meta:
+        verbose_name = 'Категория детали'
+        verbose_name_plural = 'Категории детали'
+        ordering = ['-name']
+
+    def __str__(self):
+        return self.name

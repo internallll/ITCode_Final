@@ -20,13 +20,24 @@ from django.urls import path
 from django.conf import settings
 
 from detailShop import views
-
+from detailShop.views import Index, delivery, about, search
 
 urlpatterns = [
+    path('', views.Index.as_view(), name = 'index'),
     path('admin/', admin.site.urls),
-    path('', views.main, name='main')
+
+
+    path('detail_list/', views.DetailList.as_view(), name = 'detail_list'),
+    path('detail/<int:pk>/', views.DetailDetail.as_view(), name ='detail_detail'),
+    path('category/<int:category_id>/', views.category_detail, name='category_detail'),
+    path('delivery/', delivery, name = 'delivery'),
+    path('about/', about, name='about'),
+    path('search/', search, name='search'),
+    path('create_order', views.OrderCreate.as_view(), name='create_order'),
+    path('order_list', views.OrderList.as_view(), name='order_list'),
 
 ]
+
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

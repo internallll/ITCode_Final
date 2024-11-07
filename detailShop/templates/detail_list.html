@@ -1,0 +1,46 @@
+{%extends 'base.html' %}
+{% load bootstrap5 %}
+{% block title %} Детали {%endblock %}
+
+{% block sidebar %}
+<div class="col-md-3">
+    <div class="card-body">
+        <form method="get">
+            {% csrf_token %}
+            {{ filter.form.as_p }}
+            {% buttons %}
+                <button type="submit" class="btn btn-primary">Поиск</button>
+
+            {% endbuttons %}
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+
+{%block content %}
+<h1> Запчасти: </h1>
+    <div class='row'>
+            {% for detail in detail %}
+            <div class="col-md-4 mt-4">
+                <div class='card h-100'>
+
+                        <div class='card-body'>
+                            <h5 class="card-title"> {{detail.name}}</h5>
+                            <p class="card-text"> Цена: {{ detail.price}}</p>
+                            <p class="card-text"> {{detail.car}}</p>
+                            <img src="/media/{{detail.image}}" class="img-fluid" alt="Responsive image">
+                            <div class="card_footer text-center">
+                            <a href="{% url 'detail_detail' detail.pk %}" class="align-bottom btn btn-info" style ="margin-top: auto;">Детали</a>
+
+                            </div>
+                        </div>
+                </div>
+            </div>
+        {%endfor%}
+ <a href="{%url 'index' %}">На главную </a>
+
+    </div>
+
+
+{% endblock %}

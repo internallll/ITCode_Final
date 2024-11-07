@@ -1,0 +1,50 @@
+{% load bootstrap5 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Категория</title>
+   <style>
+        .product-card img {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            text-align: right;
+            transition: transform 0.2s;
+        }
+        .product-card:hover {
+            transform: scale(1.02);
+        }
+      .row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+    </style>
+</head>
+<body>
+<h2>Категория: {{ category.name }}</h2>
+
+<div class="row">
+    {% for detail in details %}
+        <div class="col-md-4">
+            <div class="product-card">
+              <a href="{% url 'detail_detail' detail.pk %}" style="display: block; text-decoration: none; color: inherit;">>
+                <img src="{{ detail.image.url }}" alt="{{ detail.name }}" class="img">
+                <h3>{{ detail.name }}</h3>
+                <p>Цена: {{ detail.price }} руб.</p>
+
+            </div>
+        </div>
+    {% empty %}
+        <p>Нет товаров в этой категории.</p>
+    {% endfor %}
+</div>
+
+
+</body>
+</html>

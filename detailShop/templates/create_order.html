@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создание Заказа</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Создание Заказа</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5>Информация о заказе</h5>
+                </div>
+                <div class="card-body">
+                    {{ form.as_p }}
+                </div>
+            </div>
+
+            <h3>Добавить товары</h3>
+            {{ formset.management_form }}
+            {% for form in formset %}
+                <div class="card mb-3 order-element-form">
+                    <div class="card-header">
+                        <h6>Элемент заказа {{ forloop.counter }}</h6>
+                    </div>
+                    <div class="card-body">
+                        {{ form.as_p }}
+                    </div>
+                </div>
+            {% endfor %}
+
+            <button type="submit" class="btn btn-primary">Создать заказ</button>
+             <a href="{%url 'index' %}" class="btn btn-primary"> На главную</a>
+        </form>
+
+        {% if form.errors %}
+            <div class="alert alert-danger mt-3">
+                <strong>Ошибки в форме:</strong>
+                <ul>
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        {% if formset.errors %}
+            <div class="alert alert-danger mt-3">
+                <strong>Ошибки в элементах заказа:</strong>
+                <ul>
+                    {% for form in formset %}
+                        {% for error in form.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+{%extends 'base.html' %}
+{% load bootstrap5 %}
+{% block title %} Заказы {%endblock %}
+
+{%block content %}
+<h1> Заказы: </h1>
+    <div class='row'>
+            {% for order in order %}
+            <div class="col-md-4 mt-4">
+                <div class='card h-100'>
+
+                        <div class='card-body'>
+                            <h5 class="card-title"> {{order.customer}}</h5>
+
+                            <p class="card-text"> Cумма заказа: {{ order.sum}}</p>
+
+                            <p class="card-text"> {{order.address_delivery}}</p>
+                            <p class="card-text"> {{order.comment}}</p>
+                            <p class="card-text"> {{order.phone_number}}</p>
+                            <p class="card-text"> {{order.status}}</p>
+                            <div class="card_footer text-center">
+
+
+                            </div>
+                        </div>
+                </div>
+            </div>
+        {%endfor%}
+<a href="{%url 'index' %}" class="btn btn-primary"> На главную</a>
+
+    </div>
+
+
+{% endblock %}
